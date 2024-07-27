@@ -1,6 +1,7 @@
 df <- readRDS("df.rds")
 df <- subset(df, downsample = 1000) ###总体抽1000
 
+allType = levels(Idents(df))
 choose_Cells = unlist(lapply(allType, function(x){
   cgCells = allCells[Idents(df)== x ]
   cg=sample(cgCells,10)
