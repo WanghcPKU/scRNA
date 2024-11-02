@@ -29,3 +29,16 @@ pdf("./binary_heatmap.pdf",width=10 ,height=20)
 pheatmap(binary,annotation_col=anno_df,
 show_colnames=F,cluster_cols = FALSE)
 dev.off()
+
+
+##cytoscape
+
+df2 <- data.frame()
+for(i in 1:length(pc_regulons)){
+df1 <- as.data.frame(pc_regulons[i])
+colnames(df1) <- "target"
+df1$regulon <- gsub("\\([^\\)]+\\)","",names(pc_regulons[i]))
+df2 <- rbind(df2,df1)
+
+}
+df2
